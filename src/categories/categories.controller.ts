@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+import {Category} from "../entities/category.entity";
 
 @Controller('categories')
 export class CategoriesController {
@@ -13,7 +14,7 @@ export class CategoriesController {
   }
 
   @Get()
-  findAll() {
+  findAll():Promise<Category[]> {
     return this.categoriesService.findAll();
   }
 
